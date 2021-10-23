@@ -1,0 +1,227 @@
+kill_this_ride:
+  alias: Kill This Ride
+  sequence:
+  - service: media_player.media_stop
+    target:
+      entity_id: media_player.kitchen_speaker
+  mode: single
+  icon: mdi:skull
+haunted_mansion_begin:
+  alias: Haunted Mansion Begin
+  sequence:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: media_player.kitchen_speaker
+      volume_level: 0.6
+  - service: media_player.play_media
+    entity_id: media_player.kitchen_speaker
+    data:
+      media_content_id: http://192.168.0.64:8123/local/audio/haunted_mansion_preshow_full.m4a
+      media_content_type: music
+  mode: single
+haunted_mansion_lights:
+  alias: Haunted Mansion Lights
+  mode: single
+  sequence:
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      color_temp: 370
+      brightness_pct: 100
+  - delay: 00:01:20
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      color_temp: 250
+      brightness_pct: 90
+  - delay: 00:00:12
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      color_name: blue
+      brightness_pct: 100
+  - delay: 00:00:11
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      brightness_pct: 80
+  - delay: 00:00:02
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      brightness_pct: 60
+  - delay: 00:00:02
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      brightness_pct: 40
+  - delay: 00:00:02
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      brightness_pct: 20
+  - delay: 00:00:02
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      brightness_pct: 10
+  - delay: 00:00:23
+  - service: light.turn_off
+    entity_id: light.rgb_bulb
+  - service: scene.turn_on
+    entity_id: scene.haunted_lights_out
+  - delay: 00:00:01
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 90
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 90
+  - service: light.turn_on
+    target:
+      entity_id: light.rgb_bulb
+    data:
+      color_temp: 231
+      brightness_pct: 100
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 50
+  - service: light.turn_on
+    target:
+      entity_id: light.rgb_bulb
+    data:
+      color_temp: 231
+      brightness_pct: 100
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay: 00:00:13
+  - service: light.turn_on
+    entity_id: light.rgb_bulb
+    data:
+      color_temp: 370
+      brightness_pct: 80
+  - delay: 00:00:19
+  - service: script.turn_on
+    entity_id: script.kill_this_ride
+  - service: homeassistant.toggle
+    entity_id: input_boolean.haunted_mansion
+  - service: scene.turn_on
+    entity_id: scene.halloween_lights
+  icon: hass:lightbulb
+testing_rgb_bulb:
+  alias: Testing RGB Bulb
+  sequence:
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - delay: 00:00:00:090
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 90
+  - service: light.turn_on
+    target:
+      entity_id: light.rgb_bulb
+    data:
+      color_temp: 231
+      brightness_pct: 100
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      color_temp: 231
+      brightness_pct: 100
+    target:
+      entity_id: light.rgb_bulb
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 50
+  - service: light.turn_on
+    target:
+      entity_id: light.rgb_bulb
+    data:
+      color_temp: 231
+      brightness_pct: 100
+  - service: light.turn_off
+    target:
+      entity_id: light.rgb_bulb
+  mode: single
